@@ -9,8 +9,9 @@
 6)Load Balancing by using Eureka Client
 7)Log pattern
 8)Swagger in account-service app
-
-TODO:
+9)Custom annotation
+10)Java custom dto validations
+11)Hashicorp Vault
 
 
 AOP
@@ -33,7 +34,7 @@ we can give path to save the logs
 
 DB cache:-
 Calling cache method within the class (calling from same class method) won't work as cache, DB invoke will happen.
-The reason is method needs to be public so that method can be proxies. In self invocation it doesn't work because it bypass
+The reason is method needs to be public so that method can be proxied. In self invocation it doesn't work because it bypass
 the proxy and call underlying method directly.
 
 Async call:
@@ -44,6 +45,19 @@ Method return type should be void or Future<T> like CompletableFuture
 create ThreadPoolTaskExecutor object in config and set threadPoolSize to run async call on different thread,
  otherwise by default synchronous call run on Main thread and
 all async calls run on another single thread (async call execute sequentially by default).
+
+Hashicorp vault
+cmd to run server with custom secret
+>vault server -dev -dev-root-token-id=saduToken
+>set VAULT_ADDR=http://127.0.0.1:8200
+>set VAULT_TOKEN=saduToken
+>vault status //This should give proper response, make sure you are on cmd not power shell
+>vault secrets enable -path=secret kv-v2
+>vault secrets enable -path=saduKVSecrets kv-v2 //custom path, enable another KV engine
+>vault kv put saduKVSecrets/customer-service sec.val1=val1 sec.val2=val2 sec.val3=val3
+>vault kv get saduKVSecrets/customer-service //To get the secrets
+
+
 
 
 
