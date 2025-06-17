@@ -53,7 +53,7 @@ cmd to run server with custom secret
 >set VAULT_TOKEN=saduToken
 >vault status //This should give proper response, make sure you are on cmd not power shell
 >vault secrets enable -path=secret kv-v2
->vault secrets enable -path=saduKVSecrets kv-v2 //custom path, enable another KV engine
+>vault secrets enable -path=kvEngine2 kv-v2 //custom path, enable another KV engine
 >vault kv put saduKVSecrets/customer-service sec.val1=val1 sec.val2=val2 sec.val3=val3
 >vault kv get saduKVSecrets/customer-service //To get the secrets
 
