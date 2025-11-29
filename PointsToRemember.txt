@@ -1,5 +1,5 @@
 
-
+Refer customer-service repo for more details
 ================================= Topics covered: ==========================================
 1)Actuator
 2)Spring data JPA with H2 Database
