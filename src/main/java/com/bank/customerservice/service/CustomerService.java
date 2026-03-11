@@ -26,6 +26,7 @@ public class CustomerService {
 
     //Here creating cache with key as userId, here key and cache names are optional
     // we can remove cache on condition by using condition and unless = "#result.gender=M"
+    //it may still return stale data until cache evict/expiry, if other instance update data to DB.
     @Cacheable(cacheNames = CUSTOMER_CACHE_NAME, key = "#custId")
     public CustomerDto getCustomer(String custId) {
         log.info("******* Get customer by id - {} *****", custId);

@@ -32,10 +32,13 @@ We can run actuator alone on different port
 Log pattern:-
 we can give path to save the logs
 
-DB cache:-
+DB cache, Caffeine:-
 Calling cache method within the class (calling from same class method) won't work as cache, DB invoke will happen.
 The reason is method needs to be public so that method can be proxied. In self invocation it doesn't work because it bypass
 the proxy and call underlying method directly.
+
+If using Caffeine, each instance maintains its own cache.
+So if another instance updates the database, the cached instance may still return stale data until the cache entry is evicted or expired.
 
 Async call:
 It must be applied to public methods only.
