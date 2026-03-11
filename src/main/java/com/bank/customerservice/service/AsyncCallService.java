@@ -21,23 +21,23 @@ public class AsyncCallService {
         System.out.println("SYNC2 call Thread:"+Thread.currentThread().getName());
     }
 
-    @Async
+    @Async("threadPoolTaskExecutor1")
     public void async1(){
         System.out.println("ASYNC1 call Thread:"+Thread.currentThread().getName());
     }
 
-    @Async
+    @Async("threadPoolTaskExecutor1")
     public void async2() throws InterruptedException {
         Thread.sleep(5000L);
         System.out.println("ASYNC2 call Thread:"+Thread.currentThread().getName());
     }
 
-    @Async
+    @Async("threadPoolTaskExecutor1")
     public void async3(){
         System.out.println("ASYNC3 call Thread:"+Thread.currentThread().getName());
     }
 
-    @Async
+    @Async("threadPoolTaskExecutor1")
     public CompletableFuture<CustomerDto> asyncWithReturnType() throws InterruptedException {
         System.out.println("Async call with return type :"+Thread.currentThread().getName());
         CustomerDto response = customerService.getDummyCustomer();
